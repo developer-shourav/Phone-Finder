@@ -13,6 +13,17 @@ const displayPhones = (phones) => {
     phonesContainer.innerHTML = " ";
    
     /* For displaying only 20 result and Show all button*/
+
+    /* Show all result button দিয়ে সকল result দেখার ৩ টি উপায় আছে। 
+      --------------------------------------------------------------------
+
+      ১। এটা সর্বত্তম ঃ প্রথমে api থকেই ২০ টা লোড করা। পরে আমার ২০ এর পরের গুলা api থেকে load করা
+      ২। ২০ এর পরের গুলা slice করে golbal variable এ রেখে ব্যাবহার করা। 
+      
+      ৩। ফকিরা উপায় ঃ ২ বার সম্পুর্ন api load করা। প্রথম বার load kora slice করে দেখাব । পরের বার Show all button এ ক্লিক করলে সব আমার load করে সবি আবার দেখানো।
+    
+    
+    */
     const showAllButton = document.getElementById('show-all');
     if(phones.length > 20){
         phones = phones.slice(0,20);
@@ -27,8 +38,8 @@ const displayPhones = (phones) => {
     const resultCount = document.getElementById("result-count");
     resultCount.innerText = phones.length;
 
-    /* For Displaying  Empty result massage */
 
+    /* For Displaying  Empty result massage */
     const zeroResultErrorMassage = document.getElementById('empty-result-massage');
     if(phones.length === 0){
         zeroResultErrorMassage.classList.remove("d-none")
@@ -92,4 +103,6 @@ const toggleLoader = isLoading => {
 
 
 loadPhones('iphone');
+
+
 
