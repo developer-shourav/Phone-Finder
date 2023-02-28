@@ -12,8 +12,16 @@ const displayPhones = (phones) => {
     const phonesContainer = document.getElementById("phone-container");
     phonesContainer.innerHTML = " ";
    
-    /* For displaying only 20 result */
-    phones = phones.slice(0,20);
+    /* For displaying only 20 result and Show all button*/
+    const showAllButton = document.getElementById('show-all');
+    if(phones.length > 20){
+        phones = phones.slice(0,20);
+        showAllButton.classList.remove('d-none');
+    }
+
+    else{
+        showAllButton.classList.add('d-none');
+    }
 
     /* For Displaying result count */
     const resultCount = document.getElementById("result-count");
