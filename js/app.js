@@ -101,6 +101,15 @@ document.getElementById('btn-search').addEventListener('click', function (){
 
 })
 
+/* ======= Handle Search with key Enter =============*/
+document.getElementById('search-field').addEventListener('keypress', function (e){
+    if( e.key === "Enter"){
+        processSearch(20)
+    }
+})
+
+
+
 const toggleLoader = isLoading => {
     const loaderSection = document.getElementById('loader');
     /* isLoading যদি true হয় */
@@ -119,7 +128,19 @@ document.getElementById('btn-show-all').addEventListener('click', function (){
 
 })
 
+/*========== load phone details ========= */
+const loadDetails = async id => {
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayDetails(data)
+}
 
+const displayDetails = phoneData => {
+    console.log(phoneData);
+}
+
+/*========== Default Function call with argument ========= */
 loadPhones('iphone');
 
 
