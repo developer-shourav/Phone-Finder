@@ -52,6 +52,7 @@ const displayPhones = (phones) => {
     });
 
     /*========= Stop Loader ==========*/
+    toggleLoader(false);
 }
 
 document.getElementById('btn-search').addEventListener('click', function (){
@@ -63,11 +64,20 @@ document.getElementById('btn-search').addEventListener('click', function (){
 
     searchField.value = '';
   /*========= Start Loader ==========*/
+  toggleLoader(true);
 
 })
 
 const toggleLoader = isLoading => {
     const loaderSection = document.getElementById('loader');
+    /* isLoading যদি true হয় */
+    if(isLoading){
+        loaderSection.classList.remove("d-none")
+    }
+
+    else{
+        loaderSection.classList.add("d-none")
+    }
 }
 
 
