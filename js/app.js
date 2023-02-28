@@ -63,7 +63,7 @@ const displayPhones = (phones, dataLimit) => {
                           <h5 class="card-title">Brand: ${phone.brand}</h5>
                           <h4 class="card-title">Model: ${phone.phone_name}</h4>
                           <p class="card-text">Code: ${phone.slug}</p>
-                          <button onclick ="loadDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
+                          <button onclick ="loadDetails('${phone.slug}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailsModal" >Show Details</button>
                         </div>
                       </div>
                 </div>
@@ -133,15 +133,28 @@ const loadDetails = async id => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`;
     const res = await fetch(url);
     const data = await res.json();
-    displayDetails(data)
+    displayDetails(data.data)
 }
 
 const displayDetails = phoneData => {
+    const modalTitle = document.getElementById('phoneDetailsModalLabel');
+    modalTitle.innerText = phoneData.name;
+    const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.innerHTML = `
+       <img class="mb-2 w-25"  src="${phoneData.image}" alt="">
+       <p class="">Release Date: ${phoneData.releaseDate ? phoneData.releaseDate : "No Release Date found"}</p>
+       <p class="fw-bold mb-0">Main features:</p>
+       <p class="mb-0"><span class="fw-semibold">Storage:</span> ${phoneData?.mainFeatures?.storage} </p>
+       <p class="mb-0"><span class="fw-semibold">Display Size:</span> ${phoneData?.mainFeatures?.displaySize} </p>
+       <p class="mb-0"><span class="fw-semibold">ChipSet:</span> ${phoneData?.mainFeatures?.chipSet} </p>
+       <p class="mb-0"><span class="fw-semibold">Memory:</span> ${phoneData?.mainFeatures?.memory} </p>
+      
+    `
     console.log(phoneData);
 }
 
 /*========== Default Function call with argument ========= */
-loadPhones('iphone');
+loadPhones('apple');
 
 
 
