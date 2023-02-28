@@ -49,7 +49,9 @@ const displayPhones = (phones) => {
 
         phonesContainer.appendChild(phoneDiv)
 
-    })
+    });
+
+    /*========= Stop Loader ==========*/
 }
 
 document.getElementById('btn-search').addEventListener('click', function (){
@@ -60,8 +62,16 @@ document.getElementById('btn-search').addEventListener('click', function (){
     loadPhones(searchText);
 
     searchField.value = '';
+  /*========= Start Loader ==========*/
 
 })
+
+const toggleLoader = isLoading => {
+    const loaderSection = document.getElementById('loader');
+}
+
+
+
 
 loadPhones('iphone');
 
