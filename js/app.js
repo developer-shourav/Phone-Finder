@@ -9,19 +9,20 @@ const loadPhones = async() => {
 }
 
 const displayPhones = (phones) => {
-    console.log(phones.length);
     const phonesContainer = document.getElementById("phone-container");
 
     phones.forEach( phone => {
+        console.log(phone);
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
         phoneDiv.innerHTML = ` 
-        <div class="col">
+        <div class="col shadow">
                       <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="...">
+                        <img src="${phone.image}" class="card-img-top shadow-lg w-50 pt-3 mx-auto" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          <h5 class="card-title">Brand: ${phone.brand}</h5>
+                          <h4 class="card-title">Model: ${phone.phone_name}</h4>
+                          <p class="card-text">Slug: ${phone.slug}</p>
                         </div>
                       </div>
                 </div>
