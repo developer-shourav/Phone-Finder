@@ -12,7 +12,6 @@ const displayPhones = (phones) => {
     const phonesContainer = document.getElementById("phone-container");
 
     phones.forEach( phone => {
-        console.log(phone);
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
         phoneDiv.innerHTML = ` 
