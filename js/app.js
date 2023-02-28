@@ -11,8 +11,26 @@ const loadPhones = async(searchText) => {
 const displayPhones = (phones) => {
     const phonesContainer = document.getElementById("phone-container");
     phonesContainer.innerHTML = " ";
+   
+    /* For displaying only 20 result */
+    phones = phones.slice(0,20);
+
+    /* For Displaying result count */
     const resultCount = document.getElementById("result-count");
     resultCount.innerText = phones.length;
+
+    /* For Displaying  Empty result massage */
+
+    const zeroResultErrorMassage = document.getElementById('empty-result-massage');
+    if(phones.length === 0){
+        zeroResultErrorMassage.classList.remove("d-none")
+    }
+
+    else{
+        zeroResultErrorMassage.classList.add("d-none")
+    }
+
+    /* For Displaying all result */
     phones.forEach( phone => {
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
