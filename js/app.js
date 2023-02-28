@@ -10,9 +10,9 @@ const loadPhones = async(searchText) => {
 
 const displayPhones = (phones) => {
     const phonesContainer = document.getElementById("phone-container");
-
-    const phoneContainer = document.getElementById("phone-container");
-    phoneContainer.innerHTML = " ";
+    phonesContainer.innerHTML = " ";
+    const resultCount = document.getElementById("result-count");
+    resultCount.innerText = phones.length;
     phones.forEach( phone => {
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
@@ -36,7 +36,9 @@ const displayPhones = (phones) => {
 
 document.getElementById('btn-search').addEventListener('click', function (){
     const searchField = document.getElementById('search-field');
+    const searchFor = document.getElementById('search-for');
     const searchText = searchField.value;
+    searchFor.innerText = `'${searchText}'`
     loadPhones(searchText);
 
     searchField.value = '';
