@@ -56,13 +56,14 @@ const displayPhones = (phones, dataLimit) => {
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
         phoneDiv.innerHTML = ` 
-        <div class="col shadow">
+        <div class="col shadow h-100">
                       <div class="card h-100">
                         <img src="${phone.image}" class="card-img-top rounded-4 shadow-lg w-50 pt-3 mx-auto" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Brand: ${phone.brand}</h5>
                           <h4 class="card-title">Model: ${phone.phone_name}</h4>
-                          <p class="card-text">Slug: ${phone.slug}</p>
+                          <p class="card-text">Code: ${phone.slug}</p>
+                          <button onclick ="loadDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
                         </div>
                       </div>
                 </div>
